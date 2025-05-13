@@ -15,8 +15,16 @@ Open the `data.js` file and add your event to the `timelineData` array using thi
   "title": "Event Title",
   "date": "YYYY-MM-DD",
   "description": "Brief description of what happened.",
-  "source": "https://example.com/source",
-  "sourceTitle": "Source Title"
+  "sources": [
+    {
+      "title": "Title of the source",
+      "url": "https://www.youtube.com/watch?v=example"
+    },
+    {
+      "title": "Title of the source",
+      "url": "https://twitter.com/example/status/1234567890"
+    }
+  ],
 }
 ```
 
