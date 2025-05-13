@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   updateLastUpdated();
-  
+
   const container = document.getElementById("timeline-container");
   const preview = document.getElementById("timeline-preview");
   let activeItem = null;
@@ -18,14 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
       day: "numeric"
     });
 
+    // Generate sources HTML
+    const sourcesHtml = event.sources.map(source =>
+      `<a class="timeline-source" href="${source.url}" target="_blank">${source.title}</a>`
+    ).join("<br>");
+
     item.innerHTML = `
       <div class="timeline-header">
         <div class="timeline-title">${event.title}</div>
         <div class="timeline-date">${humanDate}</div>
       </div>
       <div class="timeline-details mobile-only">
-        <p>${event.description}</p>
-        <a class="timeline-source" href="${event.source}" target="_blank">${event.sourceTitle}</a>
+        <div class="description-html">${event.description}</div>
+        ${sourcesHtml}
       </div>
     `;
 
@@ -42,9 +47,14 @@ document.addEventListener("DOMContentLoaded", () => {
           <h2>${event.title}</h2>
           <div class="preview-date">${humanDate}</div>
           <p>${event.description}</p>
-          <a class="timeline-source" href="${event.source}" target="_blank">${event.sourceTitle}</a>
+          ${sourcesHtml}
         `;
         preview.classList.add("visible");
+
+        // Trigger Twitter embed rendering
+        if (window.twttr && twttr.widgets && typeof twttr.widgets.load === "function") {
+          twttr.widgets.load(preview);
+        }
       } else {
         const details = item.querySelector(".timeline-details");
         details.style.display = details.style.display === "block" ? "none" : "block";
@@ -52,13 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     container.appendChild(item);
-    
   });
 });
 
 function updateLastUpdated() {
   const lastUpdatedElement = document.getElementById('last-updated');
-  
+
   if (lastUpdatedElement) {
     fetch('https://api.github.com/repos/docling-project/docling/commits')
       .then(response => response.json())
@@ -74,3 +83,4 @@ function updateLastUpdated() {
       });
   }
 }
+
