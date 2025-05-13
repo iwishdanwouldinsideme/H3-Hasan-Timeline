@@ -30,6 +30,25 @@ body {
   font-size: 16px;
 }
 
+iframe,
+video, 
+blockquote, 
+img {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+iframe {
+  height: 350px;
+}
+
+video {
+  height: auto;
+}
+
 /* Header */
 header {
   padding: 1.5rem 2rem;
