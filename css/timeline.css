@@ -1,0 +1,147 @@
+#timeline-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+/* Timeline list */
+#timeline-container {
+  flex: 2;
+  position: relative;
+  margin-left: 20px;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  padding-left: 30px;
+}
+
+/* Preview panel on left */
+#timeline-preview {
+  flex: 1;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  display: none;
+  animation: slideUp 0.3s ease forwards;
+  height: fit-content
+}
+
+#timeline-preview.visible {
+  display: block;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Timeline item */
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 1rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+/* Left dot */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -36px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--bg);
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* Hover state */
+.timeline-item:hover::before {
+  background-color: var(--accent);
+}
+
+/* Active state - keeps dot filled */
+.timeline-item.active::before {
+  background-color: var(--accent);
+}
+
+/* Additional styling for active item */
+.timeline-item.active {
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timeline-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--highlight);
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  color: var(--success);
+  background-color: rgba(255,255,255,0.05);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Hidden on desktop, shown on mobile */
+.timeline-details {
+  display: none;
+  margin-top: 0.75rem;
+}
+
+.preview-date,
+.timeline-source {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.preview-date {
+  color: var(--success);
+}
+
+.timeline-source {
+  color: var(--accent);
+}
+
+.timeline-source:hover {
+  text-decoration: underline;
+}
+
+.preview-media {
+  margin-top: 1rem;
+  max-width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 900px) {
+  #timeline-wrapper {
+    flex-direction: column-reverse;
+  }
+
+  #timeline-preview {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}

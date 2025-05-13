@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contribution Guidelines</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/Leftovers_Podcast.jpg/250px-Leftovers_Podcast.jpg" />
+</head>
+<body>
+  <header>
+    <h1>Contribution Guidelines</h1>
+    <nav>
+      <a href="index.html">← Back to Timeline</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h1 style="color: white;">Want to add an event to the timeline?</h1>
+      
+      <br>
+      <h2>1. Create a Pull Request</h2>
+      <p>Open the <code>"data.js"</code> file and add your event to the <code>"timelineData"</code> array using this format:</p>
+
+      <pre class="code-block"><code>{
+  "title": "Event Title",
+  "date": "YYYY-MM-DD",
+  "description": "Brief description of what happened.",
+  "source": "https://example.com/source",
+  "sourceTitle": "Source Title"
+}</code></pre>
+
+      <div class="callout warning">
+        <p><strong>Important:</strong> Your source must be verifiable.  
+        For videos, include the full VOD or an archived version.  
+        For tweets, link directly no screenshots.</p>
+      </div>
+
+      <br>
+      <h2>2. Submit the Pull Request</h2>
+      <p>After editing <code>"data.js"</code>, push your changes to the main branch and open a pull request on GitHub.</p>
+      <p>In your pull request description, please include a short summary of the event.
+
+      <div class="callout success">
+        <p>Your submission will be reviewed and merged if everything checks out.</p>
+      </div>
+
+    </section>
+  </main>
+</body>
+</html>

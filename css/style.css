@@ -1,0 +1,123 @@
+/* Font import and base variables remain unchanged */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap');
+
+:root {
+  --bg: #12193d;
+  --text: #e3e0f1;
+  --accent: #c91192;
+  --highlight: #33d5e9;
+  --success: #aaec53;
+  --code-bg: #1e275c;
+  --code-border: #2d375f;
+  --callout-bg: #1a2350;
+  --callout-border: #33d5e955;
+  --font-stack: 'Space Grotesk', sans-serif;
+  --mono-font: 'Courier New', Courier, monospace;
+}
+
+/* Reset and base layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-stack);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Header */
+header {
+  padding: 1.5rem 2rem;
+  background: var(--bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+h1 {
+  font-size: 2rem;
+  color: var(--highlight);
+}
+
+/* Navigation link */
+nav a {
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--success);
+}
+
+/* Main container */
+main {
+  width: 100%;
+  max-width: 100%;
+  padding: 2rem 4vw;
+}
+
+/* Code block */
+.code-block {
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  padding: 1rem;
+  border-radius: 6px;
+  font-family: var(--mono-font);
+  font-size: 0.95rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  color: var(--success);
+  margin: 1rem 0;
+}
+
+/* Callout box */
+.callout {
+  background-color: var(--callout-bg);
+  border-left: 4px solid var(--callout-border);
+  padding: 1rem 1.25rem;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+  color: var(--text);
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.callout::before {
+  content: "ℹ️";
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.callout.warning::before {
+  content: "⚠️";
+}
+.callout.success::before {
+  content: "✅";
+}
+
+#last-updated-box {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+  background: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-family: var(--font-stack);
+  font-size: 0.85rem;
+}
